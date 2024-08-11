@@ -5,12 +5,14 @@ import com.wanted.domain.jobposting.JobPosting;
 import com.wanted.dto.jobposting.request.JobPostingCreateRequest;
 import com.wanted.common.JobPostingException;
 import com.wanted.dto.jobposting.request.JobPostingUpdateRequest;
+import com.wanted.dto.jobposting.response.JobPostingResponse;
 import com.wanted.repository.company.CompanyRepository;
 import com.wanted.repository.jobposting.JobPostingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -45,5 +47,9 @@ public class JobPostingService {
 
     public void delete(Long jobPostingId) {
         jobPostingRepository.deleteById(jobPostingId);
+    }
+
+    public List<JobPostingResponse> getList(String search) {
+        return jobPostingRepository.getList(search);
     }
 }
