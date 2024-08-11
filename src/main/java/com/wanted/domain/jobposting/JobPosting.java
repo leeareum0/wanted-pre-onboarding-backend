@@ -1,6 +1,7 @@
 package com.wanted.domain.jobposting;
 
 import com.wanted.domain.company.Company;
+import com.wanted.dto.jobposting.request.JobPostingUpdateRequest;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
@@ -37,6 +38,13 @@ public class JobPosting {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id", nullable = false)
     private Company company;
+
+    public void update(JobPostingUpdateRequest request) {
+        this.position = request.getPosition();
+        this.compensation = request.getCompensation();
+        this.detail = request.getDetail();
+        this.tech = request.getTech();
+    }
 }
 
 
