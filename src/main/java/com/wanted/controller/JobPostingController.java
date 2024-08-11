@@ -3,6 +3,7 @@ package com.wanted.controller;
 import com.wanted.common.BaseResponse;
 import com.wanted.dto.jobposting.request.JobPostingCreateRequest;
 import com.wanted.dto.jobposting.request.JobPostingUpdateRequest;
+import com.wanted.dto.jobposting.response.JobPostingDetailResponse;
 import com.wanted.dto.jobposting.response.JobPostingResponse;
 import com.wanted.service.jobposting.JobPostingService;
 import lombok.RequiredArgsConstructor;
@@ -38,5 +39,10 @@ public class JobPostingController {
     @GetMapping(value = "/job-posting")
     public List<JobPostingResponse> getList(@RequestParam(required = false) String search) {
         return jobPostingService.getList(search);
+    }
+
+    @GetMapping(value = "/job-posting/{jobPostingId}")
+    public JobPostingDetailResponse getDetail(@PathVariable Long jobPostingId) {
+        return jobPostingService.getDetail(jobPostingId);
     }
 }
