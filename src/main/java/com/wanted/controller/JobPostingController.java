@@ -1,6 +1,7 @@
 package com.wanted.controller;
 
 import com.wanted.common.BaseResponse;
+import com.wanted.dto.jobposting.request.JobPostingApplyRequest;
 import com.wanted.dto.jobposting.request.JobPostingCreateRequest;
 import com.wanted.dto.jobposting.request.JobPostingUpdateRequest;
 import com.wanted.dto.jobposting.response.JobPostingDetailResponse;
@@ -44,5 +45,11 @@ public class JobPostingController {
     @GetMapping(value = "/job-posting/{jobPostingId}")
     public JobPostingDetailResponse getDetail(@PathVariable Long jobPostingId) {
         return jobPostingService.getDetail(jobPostingId);
+    }
+
+    @PostMapping(value = "/job-posting/apply")
+    public BaseResponse apply(@Validated @RequestBody JobPostingApplyRequest request) {
+        jobPostingService.apply(request);
+        return new BaseResponse();
     }
 }
