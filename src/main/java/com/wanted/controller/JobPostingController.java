@@ -26,4 +26,10 @@ public class JobPostingController {
         return new BaseResponse();
     }
 
+    @DeleteMapping(value = "/job-posting/{jobPostingId}")
+    public BaseResponse delete(@PathVariable Long jobPostingId) {
+        jobPostingService.delete(jobPostingId);
+        return new BaseResponse();
+    }
+
 }

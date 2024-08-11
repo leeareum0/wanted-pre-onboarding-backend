@@ -42,4 +42,8 @@ public class JobPostingService {
         }
         jobPosting.get().update(request);
     }
+
+    public void delete(Long jobPostingId) {
+        jobPostingRepository.deleteById(jobPostingId);
+    }
 }
