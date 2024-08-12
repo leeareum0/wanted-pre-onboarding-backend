@@ -17,6 +17,7 @@ public class JobPosting {
     @Comment("ID")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "job_posting_id")
     private Long id;
 
     @Comment("채용포지션")
@@ -35,6 +36,7 @@ public class JobPosting {
     @Column(nullable = false)
     private String tech;
 
+    @Comment("회사 ID")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id", nullable = false)
     private Company company;
